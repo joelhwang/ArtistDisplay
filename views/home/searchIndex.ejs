@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate')%>
+
+<div class = search-body>
+    <div class = search-container>
+        <h1>Search for an Artist</h1>
+        <form class = search-form-content action = "/" method = "GET">
+            <input type="text" name = "search" placeholder="Artist search...">
+            <input type="submit" value="Search" >
+        </form>
+        <div class = search-results>
+            
+            <h2 class = search-results-title>Search Results</h2>
+            
+            
+            <ul class = search-artists>
+                <% for(let user of users) {%>
+                    <li class = search-card> 
+                        <h4 class = artist-name><%=user.username%> </h4>
+                        <% if(user.artpieces.length == 0) {%> 
+                            <h4 class = no-art>This artist has not uploaded any art yet</h4>
+                        <%}%>
+                        <% if(user.artpieces.length > 0) {%> 
+                            <h4 class = recent-caption>Most Recent Uploads:</h4>
+                        <%}%>
+                        <div class = search-art>
+                            
+                            <% if(user.artpieces.length < 3) {%> 
+                                <% for(let artpiece of user.artpieces) {%>
+                                    <a href="/artpieces/<%=artpiece._id %>">
+                                        <img class = index-img src="<%= artpiece.image.url %> ">
+                                    </a>
+                                <%}%>
+                                <a  class = profile-link href="/user/<%=user._id%>">Go to Profile</a>
+                            <%}%>
+                        
+                            <% if(user.artpieces.length > 3) {%> 
+                                <% for(let i = 0; i<3; i++) {%>
+                                    <a href="/artpieces/<%=user.artpieces[i]._id %>">
+                                        <img class = index-img src="<%= user.artpieces[i].image.url %> ">
+                                    </a>
+                                <%}%>
+                                <a  class = profile-link href="/user/<%=user._id%>">Go to Profile</a>
+                            <%}%>
+                        </div>
+                    </li>
+                    <%}%>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate')%>
+<div class = container>
+    <main class = form>
+        <h1>New Art</h1>
+        <form class = form-content action="/artpieces" method="POST" enctype="multipart/form-data">
+            <div class = field>
+                <label for="title">Title</label>
+                <input class = newInput type="text" id="title" name="artpiece[title]" required> 
+            </div>
+            <div class = field>
+                <label for="description">Description</label>
+                <input class = description type="text" id="description" name="artpiece[description]" placeholder = "optional"> 
+            </div>
+            <div>
+                <input class = image-field type="file" name="image">
+            </div>
+            <button>Upload Art</button>
+            </div>
+        </form>
+    </main>
+</div>
+<!-- <a href="/artpieces">Back to all art pieces</a> -->
+

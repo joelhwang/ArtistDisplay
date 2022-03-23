@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+<h1 class = username><%= user.username %></h1>
+<div class = user-page>
+    <ul class = user-page-list>
+        <% user.artpieces.slice().reverse().forEach(function(artpiece){%>
+            
+                <li class = list-element> 
+                    <a href="/artpieces/<%=artpiece._id%>">
+                        <img class = gallery-img src="<%= artpiece.image.url %> ">
+                        <h1 class = img-title><%= artpiece.title %> </h1>
+                    </a>
+                </li>
+            
+        <%})%>
+    </ul>
+</div>
+
+            <!-- <div class = text>
+                <h1>
+                    <%# artpiece.title %>
+                </h1>
+            </div> -->

@@ -1,0 +1,52 @@
+.navbar{
+    /* background-color: #1A374D; */
+    /* background-color: #121212; */
+    /* background-color: #969686; */
+    background-image: url(https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1086&q=80);
+    padding: 1rem;
+    padding-left: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    filter: brightness(104%);
+}
+
+.nav-list{
+    /* color: #98B4AA; */
+    color:#121212;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.left-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.nav-element-left{
+    /* color: #98B4AA; */
+    display: flex;
+    padding-left: 2rem;
+}
+
+.right-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-element-right {
+    display: flex;
+    padding-left: 2rem;
+}
+
+.nav-element-left:hover{    
+    color: white;
+}
+
+

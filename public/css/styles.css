@@ -1,0 +1,93 @@
+/* html{
+    height: 100%;
+} */
+
+body{
+    /* background-color: #0F212E;
+    color: #98B4AA; */
+    background-color: #222222;
+    color: #222222;
+    background-image: url(https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1086&q=80);
+}
+
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Merriweather', serif;*/
+} 
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited { 
+    color: inherit;
+}
+
+.field{
+    padding: 1rem;
+}
+
+/* button{
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 0.5rem;
+} */
+
+/* h1{
+    padding: 1rem;
+} */
+
+ul{
+    list-style-type: none;
+}
+
+.black-text{
+    color: black;
+}
+ 
+
+input:placeholder-shown {
+    font-style: italic;
+ }
+
+
+input:not(.image-field, .edit-btn){
+    border: 0.1em solid;
+    border-radius: 1.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+button{
+    border: 0.1em solid;
+    border-radius: 1.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+
+}
+
+.error{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.err-msg{
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: fit-content;
+    border: 0.1em solid red;
+    border-radius: 0.5em;
+    background-color: pink;
+}

@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate')%>
+<div class = container>
+    <main class = form>
+        <h1>Edit Art Piece</h1>
+        <form class = form-content action="/artpieces/<%=artpiece._id%>?_method=PUT" method="POST">
+            <div class = field>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="artpiece[title]" value = "<%=artpiece.title%>" required> 
+            </div>
+            <div class = field>
+                <label for="description">Description</label>
+                <input type="text" id="description" name="artpiece[description]" value = "<%=artpiece.description%>"> 
+            </div>
+            <button>Edit</button>
+            </div>
+        </form>
+    </main>
+</div>
+<a href="/artpieces/<%=artpiece._id%>">Back to art piece</a>
+

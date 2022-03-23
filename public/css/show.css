@@ -1,0 +1,50 @@
+.show-title{
+    padding: 2em;
+}
+
+.show-img{
+    padding-left: 2em;
+    max-width: 70%;
+    max-height: auto;
+    
+}
+
+.show-info{
+    max-width: 70%;
+}
+
+.show-info{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-btn{
+    background-color: white;
+    border: 0.15em solid black;
+    border-radius: 0.7em;
+    width:fit-content;
+    margin: 1em;
+    margin-left: 2.5em;
+}
+
+.btn-container{
+    padding-left: 2em;
+    display: flex;
+    flex-direction: row;
+}
+.show-btn{
+    background-color: white;
+    border: 0.15em solid black;
+    border-radius: 0.7em;
+    margin: 0.2em;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color: lightgray;
+}
+
+.date{
+    margin-top: 1em;
+}

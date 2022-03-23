@@ -1,0 +1,12 @@
+.success-flash{
+    text-align: center;
+    color: black;
+    background-color: lightgreen;
+    
+}
+
+.error-flash{
+    text-align: center;
+    color: black;
+    background-color: lightcoral;
+}

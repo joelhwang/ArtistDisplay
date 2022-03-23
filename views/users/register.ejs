@@ -1,0 +1,22 @@
+<%  layout('layouts/boilerplate') %>
+<div class = container>
+    <main class = form>
+        <h1>Register</h1>
+        <form class = form-content action="/user/register" method="POST">
+            <div class = field>
+                <label for="username">Username</label>
+                <input class = newInput type="text" id="username" name="username" minLength="6" required>  
+            </div>
+            <div class = field>
+                <label for="password">Password</label>
+                <input class = newInput type="password" id="password" name="password" minLength="8" required> 
+            </div>
+            <div class = field>
+                <label for="verifyPassword">Re-enter Password</label>
+                <input class = newInput type="password" id="veryifyPassword" name="verifyPassword" minLength="8" required> 
+            </div>
+            <button>Register</button>
+            </div>
+        </form>
+    </main>
+</div>

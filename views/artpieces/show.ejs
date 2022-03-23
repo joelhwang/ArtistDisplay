@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate')%>
+<div class = show-title>
+    <h1><%=artpiece.title%></h1>
+    <p>Created by: <%=artpiece.artist.username%></p>
+</div>
+<div class = show-content>
+    <img class = show-img src="<%= artpiece.image.url %> "> 
+    <div class = show-info>
+        <h3>Description:</h3>
+        <p><%=artpiece.description%></p>
+        <br>
+        <hr>
+        <p class = date>Uploaded on: <%=artpiece.date%></p>
+
+    </div>
+    <% if(currentUser && artpiece.artist.equals(currentUser._id)) {%> 
+        <!-- if current user exists and the artist of the artpiece shown is the currentUser, allow edit and delete -->
+            <div class = btn-container>
+                <button class = show-btn>
+                    <a href="/artpieces/<%=artpiece._id%>/edit">Edit</a>
+                </button>
+                <form action="/artpieces/<%=artpiece._id%>?_method=DELETE"method = "POST" >
+                    <button class = show-btn>Delete</button>
+                </form>
+            </div>
+        <% } %>
+    <button class = back-btn>
+        <a href="/user/<%=artpiece.artist._id%>">Go to Profile</a>
+    </button>
+</div>

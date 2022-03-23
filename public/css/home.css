@@ -1,0 +1,39 @@
+.home-container{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-form{
+    margin: 1em;
+    
+}
+
+.search-input{
+    border: 0.2em solid;
+    border-radius: 1.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.search-btn{
+    border: 0.2em solid;
+    border-radius: 1.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.search-btn:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.artists-href{
+    text-decoration: underline;
+}
