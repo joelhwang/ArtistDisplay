@@ -3,7 +3,6 @@ const router = express.Router();
 const tryAsync = require('../helpers/tryAsync');
 const artpieces = require('../controllers/artpieces');
 const {isLoggedIn, validateArt, isCreator} = require('../middleware');
-const res = require('express/lib/response');
 const multer  = require('multer')
 const { storage } = require('../cloudinary');
 const upload = multer({ storage});

@@ -11,14 +11,16 @@ module.exports.registerUser = async(req, res)=>{
             req.flash('error', 'Passwords do not match');
             res.redirect('register');
         }
-        const user = new User({ username });
-        user.firstLetter = username.charAt(0);
-        const registeredUser = await User.register(user, password);
-        req.login(registeredUser, err=>{
-            if(err) return next(err);
-            req.flash('success', 'Welcome to Artist Display!');
-            res.redirect('/');
-        })
+        else{
+            const user = new User({ username });
+            user.firstLetter = username.charAt(0);
+            const registeredUser = await User.register(user, password);
+            req.login(registeredUser, err=>{
+                if(err) return next(err);
+                req.flash('success', 'Welcome to Artist Display!');
+                res.redirect('/');
+            })
+        }
     } 
     catch(e){
         req.flash('error', e.message);

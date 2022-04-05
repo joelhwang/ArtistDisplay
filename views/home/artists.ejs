@@ -1,39 +1,39 @@
 <% layout('layouts/boilerplate')%>
 <h1 class = index-title>All Artists</h1>
 
-<div class = index-container>
-    <div class = alphabet-bar>
-        <a class = all href="/artists">all</a>
-        <a class = alpha-href href="/artists/a">a</a>
-        <a class = alpha-href href="/artists/b">b</a>
-        <a class = alpha-href href="/artists/c">c</a>
-        <a class = alpha-href href="/artists/d">d</a>
-        <a class = alpha-href href="/artists/e">e</a>
-        <a class = alpha-href href="/artists/f">f</a>
-        <a class = alpha-href href="/artists/g">g</a>
-        <a class = alpha-href href="/artists/h">h</a>
-        <a class = alpha-href href="/artists/i">i</a>
-        <a class = alpha-href href="/artists/j">j</a>
-        <a class = alpha-href href="/artists/k">k</a>
-        <a class = alpha-href href="/artists/l">l</a>
-        <a class = alpha-href href="/artists/m">m</a>
-        <a class = alpha-href href="/artists/n">n</a>
-        <a class = alpha-href href="/artists/o">o</a>
-        <a class = alpha-href href="/artists/p">p</a>
-        <a class = alpha-href href="/artists/q">q</a>
-        <a class = alpha-href href="/artists/r">r</a>
-        <a class = alpha-href href="/artists/s">s</a>
-        <a class = alpha-href href="/artists/t">t</a>
-        <a class = alpha-href href="/artists/u">u</a>
-        <a class = alpha-href href="/artists/v">v</a>
-        <a class = alpha-href href="/artists/w">w</a>
-        <a class = alpha-href href="/artists/x">x</a>
-        <a class = alpha-href href="/artists/y">y</a>
-        <a class = alpha-href href="/artists/z">z</a>
-    </div>
-    <ul class = artist-index>
-        <% for(let user of users) {%>
-        <li class = artist-card data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false, "scrollThreshold": "50" }'> 
+
+<div class = alphabet-bar>
+    <a class = all href="/artists">all</a>
+    <a class = alpha-href href="/artists/a">a</a>
+    <a class = alpha-href href="/artists/b">b</a>
+    <a class = alpha-href href="/artists/c">c</a>
+    <a class = alpha-href href="/artists/d">d</a>
+    <a class = alpha-href href="/artists/e">e</a>
+    <a class = alpha-href href="/artists/f">f</a>
+    <a class = alpha-href href="/artists/g">g</a>
+    <a class = alpha-href href="/artists/h">h</a>
+    <a class = alpha-href href="/artists/i">i</a>
+    <a class = alpha-href href="/artists/j">j</a>
+    <a class = alpha-href href="/artists/k">k</a>
+    <a class = alpha-href href="/artists/l">l</a>
+    <a class = alpha-href href="/artists/m">m</a>
+    <a class = alpha-href href="/artists/n">n</a>
+    <a class = alpha-href href="/artists/o">o</a>
+    <a class = alpha-href href="/artists/p">p</a>
+    <a class = alpha-href href="/artists/q">q</a>
+    <a class = alpha-href href="/artists/r">r</a>
+    <a class = alpha-href href="/artists/s">s</a>
+    <a class = alpha-href href="/artists/t">t</a>
+    <a class = alpha-href href="/artists/u">u</a>
+    <a class = alpha-href href="/artists/v">v</a>
+    <a class = alpha-href href="/artists/w">w</a>
+    <a class = alpha-href href="/artists/x">x</a>
+    <a class = alpha-href href="/artists/y">y</a>
+    <a class = alpha-href href="/artists/z">z</a>
+</div>
+<ul>
+    <% for(let user of users) {%>
+        <li class = artist-card> 
             <h4 class = artist-name><%=user.username%> </h4>
             <% if(user.artpieces.length == 0) {%> 
                 <h4 class = no-art>This artist has not uploaded any art yet</h4>
@@ -44,24 +44,27 @@
             <div class = card-art>
                 
                 <% if(user.artpieces.length < 3 && user.artpieces.length > 0) {%> 
-                    <% for(let artpiece of user.artpieces) {%>
+                    <% for(let artpiece of user.artpieces.slice().reverse()) {%>
                         <a href="/artpieces/<%=artpiece._id %>">
                             <img class = index-img src="<%= artpiece.image.url %> ">
                         </a>
                     <%}%>
-                    <a  class = profile-link href="/user/<%=user._id%>">Go to Profile</a>
                 <%}%>
             
-                <% if(user.artpieces.length > 3) {%> 
-                    <% for(let i = 0; i<3; i++) {%>
+                <% if(user.artpieces.length >= 3) {%> 
+                    <% for(let i = user.artpieces.length - 1,c = 0; c<3; c++, i--) {%>
                         <a href="/artpieces/<%=user.artpieces[i]._id %>">
                             <img class = index-img src="<%= user.artpieces[i].image.url %> ">
                         </a>
                     <%}%>
-                    <a  class = profile-link href="/user/<%=user._id%>">Go to Profile</a>
                 <%}%>
             </div>
+            <a  class = profile-link href="/user/<%=user._id%>">Go to Profile</a>
         </li>
-        <%}%>
-    </ul>
+    <%}%>
+</ul>
+<div class = 'page-bar'>
+    <% for(let i = 1 ; i <= Math.ceil(totalLength/5); i++) {%> 
+        <a class = 'page-href' href="/artists?page=<%=i%> &limit=5"><%=i%> </a>
+    <%}%>
 </div>
