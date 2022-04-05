@@ -108,3 +108,9 @@
 .page-href:hover{
     text-decoration: underline;
 }
+
+.page-number{
+    margin-top: 1em;
+    max-width: 45%;
+    text-align: center;
+}

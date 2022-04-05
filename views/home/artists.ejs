@@ -31,6 +31,9 @@
     <a class = alpha-href href="/artists/y">y</a>
     <a class = alpha-href href="/artists/z">z</a>
 </div>
+<% if(users.length>0) {%> 
+    <p class = page-number>Page  <%=page%> of <%=Math.ceil(totalLength/5)%></p>
+<%}%>
 <ul>
     <% for(let user of users) {%>
         <li class = artist-card> 

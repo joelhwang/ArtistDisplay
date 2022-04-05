@@ -38,7 +38,7 @@ module.exports.getAllArtists = async(req, res)=>{
         const endIndex = page * limit;
         allUsers.sort(dynamicSort('username'));
         const users = allUsers.slice(startIndex, endIndex);
-        res.render('home/artists', { users, totalLength});
+        res.render('home/artists', { users, totalLength, page});
     }
     else{
         res.redirect('/artists?page=1&limit=5')
@@ -62,7 +62,7 @@ module.exports.getFiltered = async(req, res)=>{
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
         const users = filteredUsers.slice(startIndex, endIndex);
-        res.render('home/filteredArtists', { users, totalLength, fLetter});
+        res.render('home/filteredArtists', { users, totalLength, fLetter, page});
     }
     else{
        res.redirect(`/artists/${fLetter}?page=1&limit=5`)
