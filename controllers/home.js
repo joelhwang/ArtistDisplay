@@ -29,7 +29,6 @@ module.exports.getSearch = async(req, res)=>{
 };
 
 module.exports.getAllArtists = async(req, res)=>{
-    const filtered = false;
     if(req.query.page && req.query.limit){
         const allUsers = await User.find({}).populate('artpieces');
         const totalLength = allUsers.length;
@@ -39,7 +38,7 @@ module.exports.getAllArtists = async(req, res)=>{
         const endIndex = page * limit;
         allUsers.sort(dynamicSort('username'));
         const users = allUsers.slice(startIndex, endIndex);
-        res.render('home/artists', { users, totalLength, filtered });
+        res.render('home/artists', { users, totalLength});
     }
     else{
         res.redirect('/artists?page=1&limit=5')
