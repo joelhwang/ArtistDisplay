@@ -41,7 +41,7 @@ module.exports.getAllArtists = async(req, res)=>{
         res.render('home/artists', { users, totalLength, page});
     }
     else{
-        res.redirect('/artists?page=1&limit=5')
+        res.redirect('/artists?page=1&limit=10')
     }
 };
 

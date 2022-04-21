@@ -32,7 +32,7 @@
     <a class = alpha-href href="/artists/z">z</a>
 </div>
 <% if(users.length>0) {%> 
-    <p class = page-number>Page  <%=page%> of <%=Math.ceil(totalLength/5)%></p>
+    <p class = page-number>Page  <%=page%> of <%=Math.ceil(totalLength/10)%></p>
 <%}%>
 <ul>
     <% for(let user of users) {%>
@@ -67,7 +67,7 @@
     <%}%>
 </ul>
 <div class = 'page-bar'>
-    <% for(let i = 1 ; i <= Math.ceil(totalLength/5); i++) {%> 
-        <a class = 'page-href' href="/artists?page=<%=i%> &limit=5"><%=i%> </a>
+    <% for(let i = 1 ; i <= Math.ceil(totalLength/10); i++) {%> 
+        <a class = 'page-href' href="/artists?page=<%=i%> &limit=10"><%=i%> </a>
     <%}%>
 </div>

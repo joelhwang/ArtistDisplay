@@ -23,7 +23,7 @@ const MongoStore = require('connect-mongo');
 
 //'mongodb://localhost:27017/artist-display'
 
-//const dbUrl = process.env.DB_URL;
+// const dbUrl = process.env.DB_URL;
 const dbUrl = 'mongodb://localhost:27017/artist-display';
 mongoose.connect(dbUrl);
 

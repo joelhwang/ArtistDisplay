@@ -47,9 +47,16 @@ module.exports.logoutUser = (req, res) =>{
 
 module.exports.showUser = async (req, res, next) => {
     const user = await User.findById(req.params.id).populate('artpieces');
-    if(!user){
-        req.flash('error', 'Cannot find that user');
-        res.redirect('/');
+    if(req.query.page && req.query.limit){
+        const totalLength = user.artpieces.length;
+        const page = parseInt(req.query.page);
+        const limit = parseInt(req.query.limit);
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+        const paginatedArt =user.artpieces.reverse().slice(startIndex, endIndex);
+        res.render('users/userShow', { user, paginatedArt, totalLength, page});
     }
-    res.render('users/userShow', { user });
+    else{
+        res.redirect(`/user/${user._id}?page=1&limit=9`)
+    }
 }

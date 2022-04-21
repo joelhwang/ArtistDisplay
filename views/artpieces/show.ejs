@@ -8,6 +8,9 @@
     <div class = show-info>
         <h3>Description:</h3>
         <p><%=artpiece.description%></p>
+        <% if(artpiece.description === '') {%>
+            <p>No description</p>
+        <% } %>  
         <br>
         <hr>
         <p class = date>Uploaded on: <%=artpiece.date%></p>
