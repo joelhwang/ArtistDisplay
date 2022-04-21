@@ -20,13 +20,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 
-
-//'mongodb://localhost:27017/artist-display'
-
-// const dbUrl = process.env.DB_URL;
-const dbUrl = 'mongodb://localhost:27017/artist-display';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/artist-display';
 mongoose.connect(dbUrl);
-
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -44,13 +39,15 @@ app.use(methodOverride('_method'));
 app.use('/public', express.static('public'));
 app.use(mongoSanitize());
 
+const secret = process.env.SECRET || 'notagoodsecret';
+
 const sessionConfig = {
     store: MongoStore.create({
         mongoUrl: dbUrl,
         touchAfter: 24 * 60 * 60
     }),
     name: 'session',
-    secret: 'goodsecret',
+    secret,
     resave: false,
     saveUnitialized: true,
     cookie:{
