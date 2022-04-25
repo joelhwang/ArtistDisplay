@@ -7,7 +7,7 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'ArtPiece'
     }],
-    veryfyPassword: String,
+    verifyPassword: String,
     firstLetter: String
 })
 UserSchema.plugin(passportLocalMongoose)
