@@ -7,6 +7,7 @@ module.exports.renderRegisterForm = (req, res)=>{
 module.exports.registerUser = async(req, res)=>{
     try{
         const { username, password, verifyPassword } = req.body;
+        //making sure the passwords entered match
         if(password != verifyPassword){
             req.flash('error', 'Passwords do not match');
             res.redirect('register');
@@ -47,6 +48,10 @@ module.exports.logoutUser = (req, res) =>{
 
 module.exports.showUser = async (req, res, next) => {
     const user = await User.findById(req.params.id).populate('artpieces');
+    /*
+        Handles pagination by placing the page and limit(number of items per page) as a query in the search bar.
+        The query values are set by clicking on the page number which is rendered on the userShow ejs template.
+    */
     if(req.query.page && req.query.limit){
         const totalLength = user.artpieces.length;
         const page = parseInt(req.query.page);

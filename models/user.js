@@ -3,6 +3,7 @@ const passportLocalMongoose = require('passport-local-mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
+    //for populating user on profile page
     artpieces: [{
         type: Schema.Types.ObjectId,
         ref: 'ArtPiece'

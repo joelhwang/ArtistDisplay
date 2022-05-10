@@ -23,7 +23,7 @@ const extension = (joi) => ({
 
 const Joi = BaseJoi.extend(extension)
 
-
+//objet validation
 module.exports.artSchema = Joi.object({
     artpiece: Joi.object({
         title: Joi.string().required().escapeHTML(),

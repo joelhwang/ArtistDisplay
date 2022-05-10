@@ -1,3 +1,4 @@
+//for development purposes
 if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
 }
@@ -20,6 +21,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 
+//DB_URL is defined in Heroku env settings
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/artist-display';
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
@@ -41,6 +43,7 @@ app.use(mongoSanitize());
 
 const secret = process.env.SECRET || 'notagoodsecret';
 
+//config for session stored in database
 const sessionConfig = {
     store: MongoStore.create({
         mongoUrl: dbUrl,
@@ -59,6 +62,8 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig));
 app.use(flash());
+
+//set some vsrious http headers with Helmet for security
 app.use(
     helmet.contentSecurityPolicy({
       useDefaults: true,
@@ -81,10 +86,13 @@ app.use((req, res, next)=>{
     next();
 })
 
+//app routes
 app.use('/user', userRoutes);
 app.use('/artpieces', artpieceRoutes);
 app.use('/', homeRoutes);
 
+
+//custom error middleware
 app.all('*', (req, res, next)=>{
     next(new CustomError('Page Not Found', 404))
 })
@@ -95,6 +103,7 @@ app.use((err, req, res, next)=>{
     res.status(statusCode).render('error', {err})
 })
 
+//Deployed to Heroku - process.env.PORT is defined by Heroku upon deployment
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

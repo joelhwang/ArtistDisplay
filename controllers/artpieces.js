@@ -14,6 +14,7 @@ module.exports.renderNewForm = (req, res)=>{
 
 module.exports.uploadArtpiece = async(req,res)=>{
     const artpiece = new ArtPiece(req.body.artpiece);
+    //if user has not chosen a file to upload before submission
     if(req.file == undefined){
         req.flash('error', 'Image is required');
         res.redirect('/artpieces/new')
@@ -33,6 +34,7 @@ module.exports.uploadArtpiece = async(req,res)=>{
 
 module.exports.showArtpiece = async (req, res, next) => {
     const artpiece = await ArtPiece.findById(req.params.id).populate('artist');
+    //if user visits show page for an artpiece that has since been deleted
     if(!artpiece){
         req.flash('error', 'Cannot find that art piece');
         res.redirect('/artpieces');
@@ -60,6 +62,7 @@ module.exports.editArtpiece = async(req, res)=>{
 module.exports.deleteArtpiece = async(req, res)=>{
     const{id} = req.params
     const artpiece = await ArtPiece.findById(id).populate('artist');
+    //deleting on cloudinary as well as in the database
     await cloudinary.uploader.destroy(artpiece.image.filename);
     await ArtPiece.findByIdAndDelete(id)
     req.flash('success', 'Successfully deleted art piece!')

@@ -29,6 +29,10 @@ module.exports.getSearch = async(req, res)=>{
 };
 
 module.exports.getAllArtists = async(req, res)=>{
+    /*
+        Handles pagination for all users page by placing the page and limit(number of items per page) as a query in the search bar.
+        The query values are set by clicking on the page number which is rendered on the artists ejs template.
+    */
     if(req.query.page && req.query.limit){
         const allUsers = await User.find({}).populate('artpieces');
         const totalLength = allUsers.length;
@@ -47,6 +51,10 @@ module.exports.getAllArtists = async(req, res)=>{
 
 module.exports.getFiltered = async(req, res)=>{
     const fLetter = req.params.firstLetter;
+    /*
+        Handles pagination for filtered users by placing the page and limit(number of items per page) as a query in the search bar.
+        The query values are set by clicking on the page number which is rendered on the filteredArtists ejs template.
+    */
     if(req.query.page && req.query.limit){
         const unfilteredUsers = await User.find({}).populate('artpieces');
         const filteredUsers = [];
