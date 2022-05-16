@@ -1,9 +1,12 @@
 const User = require('../models/user');
 
+//search results page
 module.exports.getSearch = async(req, res)=>{
     var noMatch = null;
     if(req.query.search){
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');;
+        //implements fuzzy search for finding artists
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        //finds all usernames containing search input and adds them to allUsers array
         User.find({username: regex}, function(err, allUsers){
             if(err) {
                 throw err;
@@ -12,6 +15,7 @@ module.exports.getSearch = async(req, res)=>{
                 if(allUsers.length < 1){
                     noMatch = "No artists match that search.";
                 }
+                //renders ejs template for search results
                 res.render('home/searchIndex', { users:allUsers, noMatch:noMatch }); 
             }
         }).populate('artpieces');
@@ -36,8 +40,10 @@ module.exports.getAllArtists = async(req, res)=>{
     if(req.query.page && req.query.limit){
         const allUsers = await User.find({}).populate('artpieces');
         const totalLength = allUsers.length;
+        //gets page and limit(how many entried on each page) from query params
         const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
+        //start and end index depends on current page and limit
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
         allUsers.sort(dynamicSort('username'));
@@ -58,6 +64,7 @@ module.exports.getFiltered = async(req, res)=>{
     if(req.query.page && req.query.limit){
         const unfilteredUsers = await User.find({}).populate('artpieces');
         const filteredUsers = [];
+        //adds only artists with given first letter in username to array for rendering
         for(user of unfilteredUsers){
             if(user.firstLetter == fLetter){
                 filteredUsers.push(user);
@@ -65,9 +72,11 @@ module.exports.getFiltered = async(req, res)=>{
         }
         filteredUsers.sort(dynamicSort('username'));
         const totalLength = filteredUsers.length;
+        //gets page and limit(how many entried on each page) from query params
         const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
         const startIndex = (page - 1) * limit;
+        //start and end index depends on current page and limit
         const endIndex = page * limit;
         const users = filteredUsers.slice(startIndex, endIndex);
         res.render('home/filteredArtists', { users, totalLength, fLetter, page});

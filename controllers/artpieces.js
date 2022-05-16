@@ -2,16 +2,12 @@ const ArtPiece = require('../models/artpiece');
 const { cloudinary} = require("../cloudinary");
 const {getDate} = require('../helpers/getDate');
 
-
-module.exports.index = async (req, res) => {
-    const artpieces = await ArtPiece.find({});
-    res.render('artpieces/index', { artpieces });
-}
-
+//form to upload art
 module.exports.renderNewForm = (req, res)=>{
     res.render('artpieces/new');
 }
 
+//post request to upload art
 module.exports.uploadArtpiece = async(req,res)=>{
     const artpiece = new ArtPiece(req.body.artpiece);
     //if user has not chosen a file to upload before submission
@@ -42,6 +38,7 @@ module.exports.showArtpiece = async (req, res, next) => {
     res.render('artpieces/show', { artpiece });
 }
 
+//edit form
 module.exports.renderEditForm = async (req, res,) => {
     const { id } = req.params;
     const artpiece = await ArtPiece.findById(id);
@@ -52,6 +49,7 @@ module.exports.renderEditForm = async (req, res,) => {
     res.render('artpieces/edit', { artpiece })
 }
 
+//edit post request
 module.exports.editArtpiece = async(req, res)=>{
     const {id} = req.params;
     const artpiece = await ArtPiece.findByIdAndUpdate(id, {...req.body.artpiece})
@@ -59,6 +57,7 @@ module.exports.editArtpiece = async(req, res)=>{
     res.redirect(`/artpieces/${artpiece._id}`)
 }
 
+//delete request
 module.exports.deleteArtpiece = async(req, res)=>{
     const{id} = req.params
     const artpiece = await ArtPiece.findById(id).populate('artist');

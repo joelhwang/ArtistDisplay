@@ -32,6 +32,7 @@ db.once("open", () => {
 
 const app = express();
 
+//using ejs templating, all ejs files located in views directory
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -63,7 +64,7 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-//set some vsrious http headers with Helmet for security
+//set various http headers with Helmet for added security
 app.use(
     helmet.contentSecurityPolicy({
       useDefaults: true,
@@ -73,14 +74,18 @@ app.use(
     })
   )
 
+//passport for authentication
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+//middleware which uses res.locals for access from any template
 app.use((req, res, next)=>{
+    //keeps track of currently logged in user
     res.locals.currentUser = req.user;
+    //for flashing success and error messages
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
@@ -97,6 +102,7 @@ app.all('*', (req, res, next)=>{
     next(new CustomError('Page Not Found', 404))
 })
 
+//error middleware
 app.use((err, req, res, next)=>{
     const { statusCode = 500 } = err;
     if(!err.message) err.message = 'Something went wrong'

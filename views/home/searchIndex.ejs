@@ -11,7 +11,9 @@
             
             <h2 class = search-results-title>Search Results</h2>
             
-            
+            <!-- Iterates through all users in the passed array
+            If the artist has uploaded art, show thumbnails
+            Otherwise, display the text 'This artist has not uploaded any art yet' -->
             <ul class = search-artists>
                 <% for(let user of users) {%>
                     <li class = search-card> 
