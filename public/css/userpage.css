@@ -1,20 +1,7 @@
 .username{
-    margin-right: 5%;
     padding: 2%;
     display: flex;
     justify-content: center;
-}
-
-.user-page-list{
-    margin-left: 5%;
-    margin-right: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
-    
 }
 
 .img-title {
@@ -33,6 +20,7 @@
 }
 
 .list-element{
+    
     padding: 1%;
     position: relative;
 }
@@ -44,14 +32,6 @@
 
 .list-element:hover .gallery-img {
    opacity: 0.55;
-}
-
-.gallery-img{
-    max-width: 30rem;
-    max-height: 15rem;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 0.35em;
 }
 
 .user-page-number{

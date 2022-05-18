@@ -1,15 +1,4 @@
-.artist-card{
-    background-color: beige;
-    margin: 0 auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    /* border: 0.15em solid rgb(177, 177, 166); */
-    display: flex;
-    flex-direction: column;
-    border-radius: 1em;
-    max-width:60%;
-}
+
 
 .artist-name{
     /* text-decoration: overline; */
@@ -31,22 +20,6 @@
     text-decoration: underline;
 }
 
-.card-art{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;    
-    flex-wrap: wrap;
-}
-
-.index-img{
-    margin: 1em;
-    max-width: 20rem;
-    max-height: 10rem;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-    border-radius: 0.35em;
-}
-
 .index-title{
     margin: 0.7em;
     text-align: center;
@@ -65,32 +38,8 @@
 
 }
 
-.alphabet-bar{
-    background-color: rgb(196, 219, 226);
-    border: 0.1em solid rgb(65, 63, 63);
-    border-radius: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    max-width: fit-content;
-    margin: 0 auto;
-    /* display:flex;
-    flex-wrap: wrap; */
-   
-}
-
-.alpha-href{
-    margin-left: 0.7em;
-    margin-right: 0.7em; 
-}
-
 .alpha-href:hover{
     text-decoration: underline;
-}
-
-
-.all{
-    border-right: 0.1em solid rgb(65, 63, 63);
-    padding-right:1em;
 }
 
 .page-bar{

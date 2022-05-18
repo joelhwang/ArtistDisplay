@@ -1,19 +1,24 @@
 <div class = "navbar">
     <ul class = nav-list>
-        <h2 class = title>Artist Display</h2>
-        <div class = left-nav>
-            <li class = nav-element-left><a href="/">Home</a></li>
-            <li class = nav-element-left><a href="/artists">All Artists</a></li>
+        <div class = title>
+            <h2>Artist</h2>
+            <h2>Display</h2>
         </div>
-        <div class = right-nav>
-            <% if(!currentUser) {%> 
-            <li class = nav-element-right><a href="/user/login">Login</a></li>
-            <li class = nav-element-right><a href="/user/register">Register</a></li>
-            <% } else {%>
-            <li class = nav-element-left><a href="/artpieces/new">Upload Art</a></li> 
-            <li class = nav-element-right><a href="/user/<%=currentUser._id%> ">Profile</a></li>
-            <li class = nav-element-right><a href="/user/logout">Logout</a></li>
-            <% } %> 
+        <div class = nav-links>
+            <div class = left-nav>
+                <li class = nav-element-left><a href="/">Home</a></li>
+                <li class = nav-element-left><a href="/artists">All Artists</a></li>
+            </div>
+            <div class = right-nav>
+                <% if(!currentUser) {%> 
+                <li class = nav-element-right><a href="/user/login">Login</a></li>
+                <li class = nav-element-right><a href="/user/register">Register</a></li>
+                <% } else {%>
+                <li class = nav-element-right><a href="/artpieces/new">Upload Art</a></li> 
+                <li class = nav-element-right><a href="/user/<%=currentUser._id%> ">Profile</a></li>
+                <li class = nav-element-right><a href="/user/logout">Logout</a></li>
+                <% } %> 
+            </div>
         </div>
     </ul>
 </div>
