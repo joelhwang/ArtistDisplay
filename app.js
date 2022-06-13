@@ -20,6 +20,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
+var favicon = require('serve-favicon')
 
 //DB_URL is defined in Heroku env settings
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/artist-display';
@@ -31,6 +32,8 @@ db.once("open", () => {
 });
 
 const app = express();
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 //using ejs templating, all ejs files located in views directory
 app.engine('ejs', ejsMate);
